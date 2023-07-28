@@ -5,7 +5,7 @@ import { type DirectionalLight } from "three";
 export default function GameLights() {
   const light = useRef<DirectionalLight>(null);
 
-  useFrame((state, delta) => {
+  useFrame((state) => {
     // get the current position of the light
     // instead of using the ball position, just use the camera
     light.current?.position.setZ(state.camera.position.z + 1 - 4);

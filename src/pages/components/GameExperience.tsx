@@ -1,14 +1,9 @@
 import { OrbitControls } from "@react-three/drei";
 import GameLights from "./GameLights";
-import { Level, BlockSpinner } from "./Level";
+import Level from "./Level";
 import { Physics } from "@react-three/rapier";
 import Player from "./Player";
 import useGame from "~/stores/useGame";
-import * as THREE from "three";
-
-import { Color } from "three";
-
-type RGB = `rgb(${number}, ${number}, ${number})`;
 
 export default function GameExperience() {
   const blocksCount = useGame((state) => state.blocksCount);

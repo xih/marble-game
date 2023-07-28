@@ -8,10 +8,6 @@ import {
 import { FC, useMemo, useRef, useState } from "react";
 import * as THREE from "three";
 
-import { type Vector3 } from "@react-three/fiber";
-import { type Group } from "three";
-import { type ElementType } from "react";
-
 const boxGeometry = new THREE.BoxGeometry(1, 1, 1);
 
 const floor1Material = new THREE.MeshStandardMaterial({ color: "limegreen" });
@@ -19,40 +15,9 @@ const floor2Material = new THREE.MeshStandardMaterial({ color: "greenyellow" });
 const obstacleMaterial = new THREE.MeshStandardMaterial({ color: "orangered" });
 const wallMaterial = new THREE.MeshStandardMaterial({ color: "slategrey" });
 
-// interface BlockDefinition {
-//   props: ({
-//     position,
-//   }: {
-//     position: [x: number, y: number, z: number];
-//   }) => JSX.Element;
-// }
-
-// type BlockDefinition = {
-//   (props: { position: [x: number, y: number, z: number] }): JSX.Element;
-// };
-
-// interface BlockDefinition {
-//   (position: [number, number, number]): JSX.Element;
-// }
-
-// interface BlockDefinition {
-//   (props: { position: [x: number, y: number, z: number] }): Element;
-// }
-
-// type BlockDefinition = (a: string) => Promise<boolean>;
 type BlockDefinition = (props: {
   position: [x: number, y: number, z: number];
 }) => JSX.Element;
-
-// Argument of type '({ position, }: { position: [number, number, number]; }) => JSX.Element' is not assignable to parameter of type 'BlockDefinition'.ts(2345)
-
-// ("({ position, }: [x: number, y: number, z: number]) => Element");
-
-// Type '({ position, }: [x: number, y: number, z: number]) => Element' is not assignable to type 'Blocks'.
-
-// interface BlockFunction {
-//   (position: Vector3): Group;
-// }
 /**
  *
  * @param blockstart takes a position and
@@ -163,9 +128,8 @@ export const BlockSpinner = ({
           restitution={0.2}
           friction={0}
         >
-          <mesh castShadow receiveShadow>
+          <mesh castShadow receiveShadow material={obstacleMaterial}>
             <boxGeometry args={[3.5, 0.3, 0.3]} />
-            <meshStandardMaterial color="red" />
           </mesh>
         </RigidBody>
       </group>
@@ -313,7 +277,7 @@ const Bounds = ({ length = 1 }) => {
   );
 };
 
-export const Level = ({
+const Level = ({
   count = 5,
   types = [BlockSpinner, BlockAxe, BlockLimbo],
   seed = 0,
@@ -342,3 +306,5 @@ export const Level = ({
     </>
   );
 };
+
+export default Level;
