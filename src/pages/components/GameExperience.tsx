@@ -14,9 +14,9 @@ export default function GameExperience() {
       <OrbitControls makeDefault />
       <color args={["#bdedfc"]} attach="background" />
       <Physics debug>
-        {/* <GameLights /> */}
-        <Level count={blocksCount} seed={blocksSeed} />
-        {/* <Player /> */}
+        <GameLights />
+        {/* <Level count={blocksCount} seed={blocksSeed} /> */}
+        <Player />
       </Physics>
     </>
   );
