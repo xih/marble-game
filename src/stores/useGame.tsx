@@ -1,4 +1,3 @@
-// import { number } from "zod";
 import { create } from "zustand";
 import { subscribeWithSelector } from "zustand/middleware";
 
@@ -24,9 +23,6 @@ type Logger = <
 ) => StateCreator<T, Mps, Mcs>;
 
 const subscribeWithSelector2 = subscribeWithSelector as Logger;
-
-// import { create } from "zustand";
-// import { subscribeWithSelector } from "zustand/middleware";
 
 export default create<State>()(
   subscribeWithSelector2((set) => ({
